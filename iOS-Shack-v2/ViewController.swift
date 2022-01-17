@@ -31,11 +31,7 @@ class ViewController: UIViewController, MenuControllerDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
-        
-        let aws_access_key = "***REMOVED***"
-        let aws_secret_access_key = "***REMOVED***"
-        
+
         menu.delegate = self
 
         sideMenu = SideMenuNavigationController(rootViewController: menu)
@@ -51,12 +47,12 @@ class ViewController: UIViewController, MenuControllerDelegate {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
+
     private func addChildControllers() {
         addChild(sensitiveDataController)
         addChild(logController)
         addChild(biometericController)
-        
+
 
         view.addSubview(sensitiveDataController.view)
         view.addSubview(logController.view)
@@ -88,19 +84,19 @@ class ViewController: UIViewController, MenuControllerDelegate {
             sensitiveDataController.view.isHidden = true
             logController.view.isHidden = true
             biometericController.view.isHidden = true
-        
+
 
         case .sensitiveData:
             sensitiveDataController.view.isHidden = false
             logController.view.isHidden = true
             biometericController.view.isHidden = true
-            
-            
+
+
         case .log:
             sensitiveDataController.view.isHidden = true
             logController.view.isHidden = false
             biometericController.view.isHidden = true
-            
+
         case .biometric:
             sensitiveDataController.view.isHidden = true
             logController.view.isHidden = true
@@ -110,5 +106,3 @@ class ViewController: UIViewController, MenuControllerDelegate {
     }
 
 }
-    
- 
